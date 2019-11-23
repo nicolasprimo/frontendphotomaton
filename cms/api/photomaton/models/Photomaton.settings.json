@@ -1,0 +1,23 @@
+{
+  "connection": "default",
+  "collectionName": "photomatons",
+  "info": {
+    "name": "photomaton",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "comment": ""
+  },
+  "attributes": {
+    "photo": {
+      "model": "file",
+      "via": "related",
+      "plugin": "upload"
+    },
+    "email": {
+      "type": "email"
+    }
+  }
+}
