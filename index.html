@@ -1,0 +1,73 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<title>PhotoMatou</title>
+	<link rel="stylesheet" href="./node_modules/bootstrap/dist/css/bootstrap.css">
+	<link rel="stylesheet" href="style.css">
+	<link rel="stylesheet" href="./node_modules/@fortawesome/fontawesome-free/css/all.css">
+	<!-- <link rel="stylesheet" href="./node_modules/@fortawesome/fontawesome-free/css/brands.css">
+	<link rel="stylesheet" href="./node_modules/@fortawesome/fontawesome-free/css/solid.css">
+	<link rel="stylesheet" href="./node_modules/@fortawesome/fontawesome-free/css/regular.css">
+	<link rel="stylesheet" href="./node_modules/@fortawesome/fontawesome-free/css/fontawesome.css"> -->
+</head>
+<body>
+	<!-- <h1>PhotoMatou</h1> -->
+	<div class="pm-container">
+		<div id="my_camera"></div>
+	</div>
+	
+	<!-- First, include the Webcam.js JavaScript Library -->
+	<script type="text/javascript" src="webcamjs/webcam.min.js"></script>
+	
+	<!-- Configure a few settings and attach camera -->
+	<script language="JavaScript">
+		Webcam.set({
+			width: 854,
+			height: 648,
+			image_format: 'jpeg',
+			jpeg_quality: 100,
+			constraints: {
+				width: { exact: 854 },
+				height: { exact: 648 }
+			}
+		});
+		Webcam.attach( '#my_camera' );
+	</script>
+	
+	<!-- A button for taking snaps -->
+	<!-- <form> -->
+		<i id="capture" class="fas fa-record-vinyl" onClick="take_snapshot()"></i>
+		<i id="cancel" class="fas fa-record-vinyl " onClick="cancel_snapshot()"></i>
+		<!-- <input type=button value="Take HD Snapshot" onClick="take_snapshot()"> -->
+	<!-- </form> -->
+	
+	<!-- Code to handle taking the snapshot and displaying it locally -->
+	<script language="JavaScript">
+		function take_snapshot() {
+			// take snapshot and get image data
+			Webcam.snap( function(data_uri) {
+				// display results in page
+				document.getElementById('results').innerHTML = 
+					'<h2>Voici votre photo</h2>' + 
+					'<img src="'+data_uri+'"/>';
+					document.getElementById('my_camera').classList.remove('visibility-on');
+					document.getElementById('my_camera').classList.add('visibility-off');
+			} );
+		}
+		function cancel_snapshot() {
+			// take snapshot and get image data
+			Webcam.snap( function(data_uri) {
+				// display results in page
+				document.getElementById('results').innerHTML = '';
+				document.getElementById('my_camera').classList.remove('visibility-off');
+				document.getElementById('my_camera').classList.add('visibility-on');
+			} );
+		}
+	</script>
+	
+	<div id="results"><div>
+	
+</body>
+</html>
