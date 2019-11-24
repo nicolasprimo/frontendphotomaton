@@ -41,7 +41,7 @@
   ],
   "strapi": {
     "packageManager": "npm",
-    "uuid": "670c2aa7-ad24-4379-b25d-50c2945c2f84"
+    "uuid": "86e46381-2e8c-48a3-9413-4256f6880ba7"
   },
   "engines": {
     "node": ">= 10.0.0",

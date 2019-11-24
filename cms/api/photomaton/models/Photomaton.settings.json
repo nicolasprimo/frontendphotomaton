@@ -11,13 +11,14 @@
     "comment": ""
   },
   "attributes": {
-    "photo": {
-      "model": "file",
-      "via": "related",
-      "plugin": "upload"
+    "name": {
+      "type": "string"
     },
-    "email": {
-      "type": "email"
+    "test": {
+      "type": "integer"
+    },
+    "photo": {
+      "type": "text"
     }
   }
 }

@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1>CArUOSEL</h1>
+    <h1>{{date}}</h1>
     <b-carousel
       id="carousel-1"
       v-model="slide"
@@ -16,11 +16,11 @@
     >
       <!-- Text slides with image -->
       <b-carousel-slide
-        v-for="photo in photos"
+        v-for="photo in dataImg"
         :key="photo.id"
-        caption="First slide"
-        text="Nulla vitae elit libero, a pharetra augue mollis interdum."
-        :img-src="'http://localhost:1337' + photo.photo.url"
+        caption
+        text
+        :img-src="photo.photo"
       ></b-carousel-slide>
 
       <!-- Slides with img slot -->
@@ -32,15 +32,15 @@
 </template>
 
 <script>
+import axios from "axios";
 export default {
   data() {
     return {
       slide: 0,
-      sliding: null
+      sliding: null,
+      dataImg: [],
+      date: new Date().toLocaleDateString()
     };
-  },
-  props: {
-    photos: Array
   },
   methods: {
     onSlideStart(slide) {
@@ -49,6 +49,11 @@ export default {
     onSlideEnd(slide) {
       this.sliding = false;
     }
+  },
+  mounted() {
+    axios.get("http://localhost:1337/photomatons").then(res => {
+      this.dataImg = res.data;
+    });
   }
 };
 </script>

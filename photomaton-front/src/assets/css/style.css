@@ -1,12 +1,14 @@
 body {
-  background: rgb(230,208,157);
-  background: linear-gradient(90deg, rgba(230,208,157,1) 0%, rgba(247,226,173,1) 45%, rgba(230,208,157,1) 100%);
+  /* background: rgb(230, 208, 157); */
+  /* background: linear-gradient(90deg, rgba(230,208,157,1) 0%, rgba(247,226,173,1) 45%, rgba(230,208,157,1) 100%); */
+  background-color: #1c1f22 !important;
   position: relative;
   text-align: center;
 }
+
 #results {
   /* margin: 20px !important; */
-  padding: 20px !important;
+  padding: 20px 20px 60px 20px !important;
   /* border: 1px solid; */
   background: rgb(255, 255, 255) !important;
   position: absolute;
@@ -15,48 +17,88 @@ body {
   transform: translate(-50%, -50%);
   z-index: 1;
 }
-.pm-container{
+
+.pm-container {
   height: 100vh !important;
   /* display: flex !important;
   justify-content: center !important;
   align-items:center !important; */
 }
-#my_camera{
+
+#my_camera {
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-52%, -50%);
   z-index: 2;
 }
-#my_camera video{
-  border: 12px solid rgb(20, 20, 20) !important;
+
+#my_camera video {
+  border: 30px dashed rgb(121, 121, 121) !important;
   box-sizing: content-box;
-  border-radius: 100% !important; 
+  border-radius: 100% !important;
 }
 
-#capture{
+#capture {
   position: absolute;
   top: 70%;
   left: 80%;
   font-size: 200px;
-  color: #1c242e;
+  color: #8f959b;
 }
-#capture:active{
-  color:#8f959b;
+
+#capture:active {
+  color: #c5c5c5;
 }
-#cancel{
+
+#cancel {
   position: absolute;
-  top: 50%;
-  left: 5%;
+  top: 45%;
+  left: 2%;
   font-size: 300px;
   color: #b34c4c;
 }
-#cancel:active{
+
+#cancel:active {
   color: #fb5656;
 }
-.visibility-on{
+
+.visibility-on {
   visibility: visible;
 }
-.visibility-off{
+
+.visibility-off {
   visibility: hidden;
+}
+
+.flash {
+  width: 150px;
+  height: 250px;
+  background-color: white;
+  position: absolute;
+  left: 4%;
+  border-radius: 9px;
+  box-shadow: inset 0px 0px 50px 40px rgba(244, 223, 128, 0.62);
+  -moz-box-shadow: inset 0px 0px 50px 40px rgba(244, 223, 128, 0.62);
+  -webkit-box-shadow: inset 0px 0px 50px 40px rgba(244, 223, 128, 0.62);
+}
+
+.vision {
+  width: 200px;
+  height: 170px;
+  background-color: white;
+  position: absolute;
+  right: 6%;
+  border-radius: 40px;
+  box-shadow: inset 1px 30px 80px 51px rgba(16, 16, 16, 0.85);
+  -moz-box-shadow: inset 1px 30px 80px 51px rgba(16, 16, 16, 0.85);
+  -webkit-box-shadow: inset 1px 30px 80px 51px rgba(16, 16, 16, 0.85);
+}
+
+#timer {
+  position: absolute;
+  left: 500px;
+  font-size: 300px;
+  z-index: 9999;
+  color: white;
 }
