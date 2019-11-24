@@ -51,7 +51,7 @@ export default {
     }
   },
   mounted() {
-    axios.get("http://localhost:1337/photomatons").then(res => {
+    axios.get("http://128.199.44.66:1337/photomatons").then(res => {
       // date today
       let now =
         new Date().getDate() +

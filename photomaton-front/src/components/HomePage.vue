@@ -27,7 +27,7 @@ export default {
   methods: {
     getDatas() {
       axios
-        .get("http://localhost:1337/photomatons", {
+        .get("http://128.199.44.66:1337/photomatons", {
           headers: {
             Authorization: `Bearer ${this.jwt}`
           }

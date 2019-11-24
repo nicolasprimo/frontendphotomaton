@@ -89,14 +89,22 @@ export default {
     },
 
     sendPicture() {
-      axios.post("http://localhost:1337/photomatons", {
+      axios.post("http://128.199.44.66:1337/photomatons", {
         photo: this.img
       });
       this.cancelSnapshot();
     }
   },
   mounted() {
-    axios.get("http://localhost:1337/photomatons").then(res => {
+    document.addEventListener("keypress", e => {
+      if (e.key === "s") {
+        this.cancelSnapshot();
+      }
+      if (e.key === "5") {
+        this.count(4);
+      }
+    });
+    axios.get("http://128.199.44.66:1337/photomatons").then(res => {
       this.dataImg = res.data;
     });
 
