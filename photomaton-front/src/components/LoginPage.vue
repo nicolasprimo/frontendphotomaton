@@ -29,12 +29,14 @@ export default {
   },
   methods: {
     login() {
+      console.log("login");
       axios
         .post("http://128.199.44.66:1337/auth/local", {
           identifier: this.identifier,
           password: this.password
         })
         .then(response => {
+          console.log(response);
           // Handle success.
           this.$emit("connected", response.data.jwt);
         })
