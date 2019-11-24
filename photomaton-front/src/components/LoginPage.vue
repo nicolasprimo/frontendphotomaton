@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class>
     <b-form inline>
       <label class="sr-only" for="inline-form-input-name">Name</label>
       <b-input-group prepend="Name" class="mb-2 mr-sm-2 mb-sm-0">

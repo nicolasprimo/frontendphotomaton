@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class>
     <!-- <h1>{{date}}</h1> -->
     <b-carousel
       id="carousel-1"

@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div id="timer">{{maxSecs}}</div>
+    <div id="timer e">{{maxSecs}}</div>
     <div class="flash"></div>
     <div class="vision"></div>
     <div class="pm-container">

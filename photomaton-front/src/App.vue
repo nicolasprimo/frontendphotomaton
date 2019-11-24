@@ -1,11 +1,11 @@
 <template>
-  <div id="app" class="container">
+  <div id="app" class="container ee">
     <router-view @connected="store"></router-view>
   </div>
 </template> 
 
 <script>
-import HomePage from "./components/HomePage.vue"; 
+import HomePage from "./components/HomePage.vue";
 import LoginPage from "./components/LoginPage.vue";
 import PhotomatonPage from "./components/PhotomatonPage.vue";
 
