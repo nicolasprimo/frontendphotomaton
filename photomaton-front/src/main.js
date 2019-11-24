@@ -7,14 +7,10 @@ Vue.config.productionTip = false
 Vue.use(BootstrapVue)
 import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
-import PhotomatonPage from "./components/PhotomatonPage.vue";
-const router = new VueRouter({
-  routes: [{
-    path: "/photomaton",
-    component: PhotomatonPage
-  }]
-});
+
+import router from './router.js'
 
 new Vue({
+  router,
   render: h => h(App),
 }).$mount('#app')

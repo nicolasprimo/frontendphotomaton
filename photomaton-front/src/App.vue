@@ -1,10 +1,8 @@
 <template>
   <div id="app" class="container">
-    <HomePage :jwt="JWT" v-if="JWT" @logout="logout" />
-    <LoginPage v-else @connected="store" />
-    <PhotomatonPage />
+    <router-view @connected="store"></router-view>
   </div>
-</template>
+</template> 
 
 <script>
 import HomePage from "./components/HomePage.vue";

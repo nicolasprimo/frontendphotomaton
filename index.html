@@ -56,8 +56,7 @@
 			Webcam.snap(function (data_uri) {
 				// display results in page
 				document.getElementById('results').innerHTML =
-					'<h2>Voici votre photo</h2>' +
-					'<img src="' + data_uri + '"/>';
+					'<h2>Voici votre photo</h2>' + '<img src="' + data_uri + '"/>';
 				document.getElementById('my_camera').classList.remove('visibility-on');
 				document.getElementById('my_camera').classList.add('visibility-off');
 			});
