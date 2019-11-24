@@ -6,8 +6,22 @@
     <div class="pm-container">
       <div id="my_camera"></div>
     </div>
-    <i id="capture" class="fas fa-record-vinyl" @click="count(4)"></i>
-    <i id="cancel" class="fas fa-record-vinyl" @click="cancelSnapshot"></i>
+    <i
+      id="capture"
+      v-if="photoTaken"
+      style="color: #7cb342"
+      class="fas fa-check-circle"
+      @click="sendPicture"
+    ></i>
+    <i id="capture" v-else class="fas fa-record-vinyl" @click="count(4)"></i>
+    <i
+      id="cancel"
+      v-if="photoTaken"
+      style="color: #b34c4c"
+      class="fas fa-times-circle"
+      @click="cancelSnapshot"
+    ></i>
+    <i id="cancel" v-else class="fas fa-record-vinyl" @click="cancelSnapshot"></i>
     <div id="results"></div>
   </div>
 </template>
@@ -24,7 +38,9 @@ export default {
       img: "",
       name: "",
       maxSecs: null,
-      decompte: null
+      decompte: null,
+      saveImg: false,
+      photoTaken: false
     };
   },
   props: {},
@@ -32,6 +48,7 @@ export default {
     maxSecs(val) {
       if (this.maxSecs == 0) {
         clearInterval(this.decompte);
+        this.photoTaken = true;
         this.maxSecs = null;
         this.takeSnapshot();
       }
@@ -48,8 +65,6 @@ export default {
       }
     },
     takeSnapshot() {
-      // setTimeout(() => {
-      // take snapshot and get image data
       self = this;
       Webcam.snap(function(data_uri) {
         self.img = data_uri;
@@ -58,12 +73,12 @@ export default {
           "<h2></h2>" + '<img src="' + data_uri + '"/>';
         document.getElementById("my_camera").classList.remove("visibility-on");
         document.getElementById("my_camera").classList.add("visibility-off");
-        self.sendPicture();
+        // self.sendPicture();
       });
-      // }, 3000);
     },
 
     cancelSnapshot() {
+      this.photoTaken = false;
       // take snapshot and get image data
       Webcam.snap(function(data_uri) {
         // display results in page
@@ -77,6 +92,7 @@ export default {
       axios.post("http://localhost:1337/photomatons", {
         photo: this.img
       });
+      this.cancelSnapshot();
     }
   },
   mounted() {

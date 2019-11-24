@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1>{{date}}</h1>
+    <!-- <h1>{{date}}</h1> -->
     <b-carousel
       id="carousel-1"
       v-model="slide"
@@ -52,7 +52,25 @@ export default {
   },
   mounted() {
     axios.get("http://localhost:1337/photomatons").then(res => {
-      this.dataImg = res.data;
+      // date today
+      let now =
+        new Date().getDate() +
+        "/" +
+        new Date().getMonth() +
+        "/" +
+        new Date().getFullYear();
+
+      this.dataImg = res.data.filter(el => {
+        let current =
+          new Date(el.created_at).getDate() +
+          "/" +
+          new Date(el.created_at).getMonth() +
+          "/" +
+          new Date(el.created_at).getFullYear();
+
+        return current === now;
+      });
+      console.log(res.data);
     });
   }
 };
