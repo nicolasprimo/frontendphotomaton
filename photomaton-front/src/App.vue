@@ -5,7 +5,7 @@
 </template> 
 
 <script>
-import HomePage from "./components/HomePage.vue";
+import HomePage from "./components/HomePage.vue"; 
 import LoginPage from "./components/LoginPage.vue";
 import PhotomatonPage from "./components/PhotomatonPage.vue";
 
