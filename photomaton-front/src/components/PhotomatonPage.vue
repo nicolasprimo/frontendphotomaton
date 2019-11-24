@@ -6,7 +6,7 @@
     <div class="pm-container">
       <div id="my_camera"></div>
     </div>
-    <i id="capture" class="fas fa-record-vinyl" @click="count"></i>
+    <i id="capture" class="fas fa-record-vinyl" @click="count(4)"></i>
     <i id="cancel" class="fas fa-record-vinyl" @click="cancelSnapshot"></i>
     <div id="results"></div>
   </div>
@@ -23,7 +23,7 @@ export default {
     return {
       img: "",
       name: "",
-      maxSecs: 4,
+      maxSecs: null,
       decompte: null
     };
   },
@@ -32,44 +32,35 @@ export default {
     maxSecs(val) {
       if (this.maxSecs == 0) {
         clearInterval(this.decompte);
+        this.maxSecs = null;
+        this.takeSnapshot();
       }
     }
   },
   methods: {
-    count() {
-      let timer = document.getElementById("timer");
-      let time = 1000;
-      // for (let i = 5; i >= 0; i--) {
-      //   setTimeout(function() {
-      //     timer.textContent = i;
-      //   }, time);
-      //   time += 1000;
-      // }
-      this.decompte = setInterval(() => {
-        this.maxSecs--;
-      }, 1000);
-      // setTimeout(function() {
-      //   var elem = document.getElementById("timer");
-      //   elem.parentNode.removeChild(elem);
-      //   //sourire.innerHTML="Souriez"
-      // }, 2000);
+    count(secs) {
+      this.cancelSnapshot();
+      if (this.maxSecs === null) {
+        this.maxSecs = secs;
+        this.decompte = setInterval(() => {
+          this.maxSecs--;
+        }, 1000);
+      }
     },
     takeSnapshot() {
-      setTimeout(() => {
-        // take snapshot and get image data
-        self = this;
-        Webcam.snap(function(data_uri) {
-          self.img = data_uri;
-          // display results in page
-          document.getElementById("results").innerHTML =
-            "<h2></h2>" + '<img src="' + data_uri + '"/>';
-          document
-            .getElementById("my_camera")
-            .classList.remove("visibility-on");
-          document.getElementById("my_camera").classList.add("visibility-off");
-          self.sendPicture();
-        });
-      }, 3000);
+      // setTimeout(() => {
+      // take snapshot and get image data
+      self = this;
+      Webcam.snap(function(data_uri) {
+        self.img = data_uri;
+        // display results in page
+        document.getElementById("results").innerHTML =
+          "<h2></h2>" + '<img src="' + data_uri + '"/>';
+        document.getElementById("my_camera").classList.remove("visibility-on");
+        document.getElementById("my_camera").classList.add("visibility-off");
+        self.sendPicture();
+      });
+      // }, 3000);
     },
 
     cancelSnapshot() {

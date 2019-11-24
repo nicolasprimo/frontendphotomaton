@@ -97,7 +97,9 @@ body {
 
 #timer {
   position: absolute;
-  left: 500px;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
   font-size: 300px;
   z-index: 9999;
   color: white;
